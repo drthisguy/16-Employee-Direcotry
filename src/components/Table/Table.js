@@ -47,8 +47,16 @@ export default class Table extends Component {
     }
 }
 
-const RenderRow = (props) =>{
-  return props.keys.map((key, index)=>{
-    return <td key={props.data[key]}>{props.data[key]}</td>
-  })
+function RenderRow(props) {
+  
+    return (
+        <React.Fragment>
+            <td key={props.data.avatar}>{props.data.avatar}</td>
+            <td key={props.data.name.last}>{props.data.name.first}{' '}{props.data.name.last}</td>
+            <td key={props.data.phone}>{props.data.phone}</td>
+            <td key={props.data.email}>{props.data.email}</td>
+            <td key={props.data.dob.age}>{props.data.dob.age}</td>
+        </React.Fragment>
+    );
+ 
 }
