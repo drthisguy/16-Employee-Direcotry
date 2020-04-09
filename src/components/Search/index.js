@@ -28,9 +28,9 @@ export class SearchField extends Component {
 }
 
 // propTypes
-// SearchField.propTypes = {
-//   SearchField: PropTypes.func.isRequired
-// }
+SearchField.propTypes = {
+  SearchField: PropTypes.func
+}
 
 
 export default SearchField;
