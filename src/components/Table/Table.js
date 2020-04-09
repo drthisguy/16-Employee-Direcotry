@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Row from '../Row/Row';
 // import PropTypes from 'prop-types'
-
 
 export default function Table(props) {
         
@@ -9,10 +9,7 @@ export default function Table(props) {
       return columns.map( column => <th>{column}</th>)
     }
     
-    const getRows = () => {
-      const items = props.data;
-      return items.map( row => <tr><RenderRow data={row}/></tr>)
-    }
+    const getRows = () => props.data.map( row => <tr><Row data={row} /></tr>)
     
     return (
         <div>
@@ -24,19 +21,6 @@ export default function Table(props) {
             {getRows()}
         </tbody>
         </table>
-        </div>
-        
-    );
-}
-
-function RenderRow(props) {
-    return (
-        <React.Fragment>
-            <td>{props.data.avatar}</td>
-            <td>{props.data.name.first}{' '}{props.data.name.last}</td>
-            <td>{props.data.phone}</td>
-            <td>{props.data.email}</td>
-            <td>{props.data.dob.age}</td>
-        </React.Fragment>
-    );
+        </div> 
+    )
 }
