@@ -36,8 +36,8 @@ const Name =  ({ sort }) => {
     )
  };
 
-const Age =  ({ sort })=> {
-    const direction = sort.nameIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+const Age =  ({ sort }) => {
+    const direction = sort.ageIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
     return (
         <span>
             Age <i className={direction} 

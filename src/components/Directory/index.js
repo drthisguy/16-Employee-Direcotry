@@ -29,28 +29,20 @@ export default class Directory extends Component {
     sortNames = () => {
         this.setState({ nameIsSorted: !this.state.nameIsSorted })
 
+        let results
             if(this.state.nameIsSorted) {
-                this.unSortNames();
-                return;
-            }
-        const results = this.state.queried.sort((a, b) => 
-
-            (a.name.last < b.name.last) ? -1 
-            : (a.name.last > b.name.last) ? 0 
-            : 0
-           )
-        this.setState({ employees: results })
-    }
-
-    unSortNames = () => {
-        this.setState({ nameIsSorted: !this.state.nameIsSorted })
-                   
-        const results = this.state.queried.sort((a, b) => 
+            results = this.state.queried.sort((a, b) => 
 
             (a.name.last > b.name.last) ? -1 
-            : (a.name.last < b.name.last) ? 0 
-            : 0
-           )
+            : (a.name.last < b.name.last) ? 1
+            : 0)
+        } else {
+            results = this.state.queried.sort((a, b) => 
+            
+            (a.name.last < b.name.last) ? -1 
+            : (a.name.last > b.name.last) ? 0 
+            : 0)
+        }
         this.setState({ employees: results })
     }
 
