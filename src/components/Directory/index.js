@@ -4,14 +4,25 @@ import Table from '../Table'
 import SearchField from '../Search'
 
 
-export class Directory extends Component {
+export default class Directory extends Component {
 
     state = {
+        queried: [],
         employees:[],
         query: ""
     }
 
-    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+    onSearch = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+
+        const all = this.state.queried,
+          first = all.filter(x => x.name.first.includes(e.target.value)),
+          last = all.filter(x => x.name.last.includes(e.target.value)),
+
+          results = [...first, ...last];
+          
+        this.setState({ employees: results })
+    }
 
 
     componentDidMount() {
@@ -30,17 +41,16 @@ export class Directory extends Component {
                 rows.push(rowData);
             })
             this.setState({ employees: rows })            
+            this.setState({ queried: rows })            
         })
     }
 
     render() {
         return (
             <div>
-                <SearchField value={this.state.query} onChange={this.onChange}/>
+                <SearchField value={this.state.query} onSearch={this.onSearch}/>
                 <Table data={this.state.employees}/>
             </div>
         )
     }
 }
-
-export default Directory

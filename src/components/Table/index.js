@@ -5,7 +5,7 @@ import Row from '../Row';
 export default function Table(props) {
         
     const getHeader = () => {
-      const columns = ['Photo', 'Name', 'Email', 'Phone', 'Age',]
+      const columns = ['Photo', 'Name', 'Phone', 'Email', 'Age',]
       return columns.map( column => <th>{column}</th>)
     }
     

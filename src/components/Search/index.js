@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types'
 
-export default function SearchField(props) {
+export default function SearchField({ query, onSearch }) {
 
   return (
     <div>
@@ -11,8 +11,8 @@ export default function SearchField(props) {
           type="text"
           name="query"
           placeholder="Search Directory ..."
-          value={props.query}
-          onChange={props.onChange}
+          value={query}
+          onChange={onSearch}
         />
       </form>
     </div>
@@ -22,5 +22,5 @@ export default function SearchField(props) {
 
 // propTypes
 SearchField.propTypes = {
-  SearchField: PropTypes.func
+  SearchField: PropTypes.object
 }
