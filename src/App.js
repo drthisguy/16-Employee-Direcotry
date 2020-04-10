@@ -1,15 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import SearchField from './components/Search';
-import Employees from './components/Employees';
+import Directory from './components/Directory';
 import './App.css';
 
 export default function App() {
   return (
     <div>
       <Navbar />
-      <SearchField />
-      <Employees />
+      <Directory />
     </div>
   );
 }
