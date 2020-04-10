@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from '../Row/Row';
+import Row from '../Row';
 // import PropTypes from 'prop-types'
 
 export default function Table(props) {

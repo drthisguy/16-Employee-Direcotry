@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Table from '../Table/Table'
+import Table from '../Table'
+import SearchField from '../Search'
 
-export class Employees extends Component {
+
+export class Directory extends Component {
 
     state = {
-        employees:[]
+        employees:[],
+        query: ""
     }
+
+    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
 
     componentDidMount() {
         axios.get('https://randomuser.me/api/?results=100')
@@ -30,10 +36,11 @@ export class Employees extends Component {
     render() {
         return (
             <div>
+                <SearchField value={this.state.query} onChange={this.onChange}/>
                 <Table data={this.state.employees}/>
             </div>
         )
     }
 }
 
-export default Employees
+export default Directory
