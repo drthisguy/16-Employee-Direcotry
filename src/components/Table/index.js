@@ -6,7 +6,7 @@ import './style.css';
 export default function Table(props) {
         
     const getHeader = () => {
-      const columns = ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age />,]
+      const columns = ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age sort={props}/>,]
       return columns.map( column => <th>{column}</th>)
     }
     
@@ -36,8 +36,12 @@ const Name =  ({ sort }) => {
     )
  };
 
-const Age =  (props)=> {
-  return (
-      <span>Age <i className="fa fa-angle-down"></i></span>
-    )
+const Age =  ({ sort })=> {
+    const direction = sort.nameIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+    return (
+        <span>
+            Age <i className={direction} 
+              onClick={sort.sortAges}></i>
+       </span>
+      )
  };

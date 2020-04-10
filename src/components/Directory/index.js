@@ -54,6 +54,15 @@ export default class Directory extends Component {
         this.setState({ employees: results })
     }
 
+    sortAges = () => {
+        this.setState({ ageIsSorted: !this.state.ageIsSorted})
+
+        const results = this.state.queried.sort((a, b) => 
+            this.state.ageIsSorted ? a.age - b.age : b.age - a.age)
+         
+        this.setState({ employees: results })
+    }
+
     componentDidMount() {
         axios.get('https://randomuser.me/api/?results=100')
         .then( ({ data }) => {
@@ -64,7 +73,7 @@ export default class Directory extends Component {
                     name: employee.name,
                     phone: employee.phone,
                     email: employee.email,
-                    dob: employee.dob,
+                    age: employee.dob.age,
                     avatar: employee.picture.thumbnail
                 } 
                 rows.push(rowData);
@@ -82,7 +91,8 @@ export default class Directory extends Component {
                 <Table data={this.state.employees}
                     nameIsSorted={this.state.nameIsSorted}
                     sortNames={this.sortNames}
-                    ageIsSorted={this.state.ageIsSorted}/>
+                    ageIsSorted={this.state.ageIsSorted}
+                    sortAges={this.sortAges}/>
             </div>
         )
     }
