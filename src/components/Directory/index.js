@@ -9,7 +9,9 @@ export default class Directory extends Component {
     state = {
         queried: [],
         employees:[],
-        query: ""
+        query: "",
+        nameIsSorted: false,
+        ageIsSorted: false
     }
 
     onSearch = (e) => {
@@ -24,6 +26,39 @@ export default class Directory extends Component {
         this.setState({ employees: results })
     }
 
+    sortNames = () => {
+        this.setState({ nameIsSorted: !this.state.nameIsSorted })
+
+            if(this.state.nameIsSorted) {
+                this.unSortNames();
+                return;
+            }
+        const results = this.state.queried.sort((a, b) => {
+
+            if(a.name.last < b.name.last) {
+                return -1;
+            } if (a.name.last > b.name.last) {
+                return 1;
+            } else {
+                return 0;
+            }})
+        this.setState({ employees: results })
+    }
+
+    unSortNames = () => {
+        this.setState({ nameIsSorted: !this.state.nameIsSorted })
+                   
+        const results = this.state.queried.sort((a, b) => {
+
+            if(a.name.last > b.name.last) {
+                return -1;
+            } if (a.name.last < b.name.last) {
+                return 1;
+            } else {
+                return 0;
+            }})
+        this.setState({ employees: results })
+    }
 
     componentDidMount() {
         axios.get('https://randomuser.me/api/?results=100')
@@ -48,8 +83,12 @@ export default class Directory extends Component {
     render() {
         return (
             <div>
-                <SearchField value={this.state.query} onSearch={this.onSearch}/>
-                <Table data={this.state.employees}/>
+                <SearchField value={this.state.query} 
+                    onSearch={this.onSearch}/>
+                <Table data={this.state.employees}
+                    nameIsSorted={this.state.nameIsSorted}
+                    sortNames={this.sortNames}
+                    ageIsSorted={this.state.ageIsSorted}/>
             </div>
         )
     }
