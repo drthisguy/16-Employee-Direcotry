@@ -33,30 +33,24 @@ export default class Directory extends Component {
                 this.unSortNames();
                 return;
             }
-        const results = this.state.queried.sort((a, b) => {
+        const results = this.state.queried.sort((a, b) => 
 
-            if(a.name.last < b.name.last) {
-                return -1;
-            } if (a.name.last > b.name.last) {
-                return 1;
-            } else {
-                return 0;
-            }})
+            (a.name.last < b.name.last) ? -1 
+            : (a.name.last > b.name.last) ? 0 
+            : 0
+           )
         this.setState({ employees: results })
     }
 
     unSortNames = () => {
         this.setState({ nameIsSorted: !this.state.nameIsSorted })
                    
-        const results = this.state.queried.sort((a, b) => {
+        const results = this.state.queried.sort((a, b) => 
 
-            if(a.name.last > b.name.last) {
-                return -1;
-            } if (a.name.last < b.name.last) {
-                return 1;
-            } else {
-                return 0;
-            }})
+            (a.name.last > b.name.last) ? -1 
+            : (a.name.last < b.name.last) ? 0 
+            : 0
+           )
         this.setState({ employees: results })
     }
 
