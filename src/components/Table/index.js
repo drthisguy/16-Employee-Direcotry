@@ -5,12 +5,14 @@ import './style.css';
 
 export default function Table(props) {
         
+    const getColumns = () => ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age sort={props}/>]
+
     const getHeader = () => {
-      const columns = ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age sort={props}/>,]
-      return columns.map( column => <th>{column}</th>)
+      const columns = getColumns()
+      return columns.map( (column, index) => <th key={index}>{column}</th>)
     }
     
-    const getRows = () => props.data.map( row => <tr><Row data={row} /></tr>)
+    const getRows = () => props.data.map( row => <tr key={row.id}><Row data={row}  /></tr>)
     
     return (
         <div>
@@ -34,7 +36,7 @@ const Name =  ({ sort }) => {
             onClick={sort.sortNames}></i>
      </span>
     )
- };
+ }
 
 const Age =  ({ sort }) => {
     const direction = sort.ageIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
@@ -44,4 +46,4 @@ const Age =  ({ sort }) => {
               onClick={sort.sortAges}></i>
        </span>
       )
- };
+ }

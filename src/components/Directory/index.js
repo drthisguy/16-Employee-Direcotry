@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Table from '../Table'
 import SearchField from '../Search'
-
+import uuid from 'react-uuid'
 
 export default class Directory extends Component {
 
@@ -26,25 +26,21 @@ export default class Directory extends Component {
         this.setState({ employees: results })
     }
 
-    sortNames = () => {
-        this.setState({ nameIsSorted: !this.state.nameIsSorted })
+sortNames = () => {
+  this.setState({ nameIsSorted: !this.state.nameIsSorted });
 
-        let results
-            if(this.state.nameIsSorted) {
-            results = this.state.queried.sort((a, b) => 
-
-            (a.name.last > b.name.last) ? -1 
-            : (a.name.last < b.name.last) ? 1
-            : 0)
-        } else {
-            results = this.state.queried.sort((a, b) => 
-            
-            (a.name.last < b.name.last) ? -1 
-            : (a.name.last > b.name.last) ? 0 
-            : 0)
-        }
-        this.setState({ employees: results })
-    }
+  let results;
+  if (this.state.nameIsSorted) {
+    results = this.state.queried.sort((a, b) =>
+      a.name.last > b.name.last ? -1 : a.name.last < b.name.last ? 1 : 0
+    );
+  } else {
+    results = this.state.queried.sort((a, b) =>
+      a.name.last < b.name.last ? -1 : a.name.last > b.name.last ? 0 : 0
+    );
+  }
+  this.setState({ employees: results });
+};
 
     sortAges = () => {
         this.setState({ ageIsSorted: !this.state.ageIsSorted})
@@ -62,6 +58,7 @@ export default class Directory extends Component {
 
             data.results.forEach( employee => {
                 const rowData = {
+                    id: uuid(),
                     name: employee.name,
                     phone: employee.phone,
                     email: employee.email,
@@ -70,6 +67,7 @@ export default class Directory extends Component {
                 } 
                 rows.push(rowData);
             })
+
             this.setState({ employees: rows })            
             this.setState({ queried: rows })            
         })
