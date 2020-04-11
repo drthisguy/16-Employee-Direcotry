@@ -15,7 +15,7 @@ export default function Table(props) {
     const getRows = () => props.data.map( row => <tr key={row.id}><Row data={row}  /></tr>)
     
     return (
-        <div>
+        <div style={{ justifyContent: "center", display: "flex" }}>
         <table>
         <thead>
             <tr>{getHeader()}</tr>
@@ -29,7 +29,7 @@ export default function Table(props) {
 }
 
 const Name =  ({ sort }) => {
-    const direction = sort.nameIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+    const direction = sort.nameIsSorted ? 'fa fa-angle-up' : 'fa fa-angle-down';
   return (
       <span>
           Name <i className={direction} 

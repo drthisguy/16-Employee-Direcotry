@@ -1,13 +1,14 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import style from './style';
 
 export default function SearchField({ query, onSearch }) {
 
   return (
-    <div>
+    <div style={ style.wrap }>
       <form>
         <input
-          style={{ flex: "10", padding: "5px" }}
+          style={ style.input }
           type="text"
           name="query"
           placeholder="Search Directory ..."
@@ -17,7 +18,6 @@ export default function SearchField({ query, onSearch }) {
       </form>
     </div>
   );
-  
 }
 
 // propTypes
