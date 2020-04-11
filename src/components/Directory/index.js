@@ -46,7 +46,7 @@ sortNames = () => {
         this.setState({ ageIsSorted: !this.state.ageIsSorted})
 
         const results = this.state.queried.sort((a, b) => 
-            this.state.ageIsSorted ? a.age - b.age : b.age - a.age)
+            this.state.ageIsSorted ? b.age - a.age : a.age - b.age)
          
         this.setState({ employees: results })
     }

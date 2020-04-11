@@ -39,11 +39,11 @@ const Name =  ({ sort }) => {
  }
 
 const Age =  ({ sort }) => {
-    const direction = sort.ageIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+    const direction = sort.ageIsSorted ? 'fa fa-angle-up' : 'fa fa-angle-down';
     return (
         <span>
             Age <i className={direction} 
-              onClick={sort.sortAges}></i>
+              onClick={sort.sortAges}> {' '} </i>
        </span>
       )
  }
