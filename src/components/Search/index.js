@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import style from './style';
+import './style.css';
 
 export default function SearchField({ query, onSearch }) {
 
   return (
-    <div style={ style.wrap }>
+    <div className={"wrap"}>
       <form>
         <input
-          style={ style.input }
           type="text"
           name="query"
           placeholder="Search Directory ..."
