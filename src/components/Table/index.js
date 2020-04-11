@@ -9,10 +9,10 @@ export default function Table(props) {
 
     const getHeader = () => {
       const columns = getColumns()
-      return columns.map( (column, index) => <th key={index}>{column}</th>)
+      return columns.map( (column, i) => <th key={i}>{column}</th>)
     }
     
-    const getRows = () => props.data.map( row => <tr key={row.id}><Row data={row}  /></tr>)
+    const getRows = () => props.data.map( (row, i) => <tr key={i}><Row data={row}  /></tr>)
     
     return (
         <div style={{ justifyContent: "center", display: "flex" }}>
@@ -43,7 +43,7 @@ const Age =  ({ sort }) => {
     return (
         <span>
             Age <i className={direction} 
-              onClick={sort.sortAges}> {' '} </i>
+              onClick={sort.sortAges}></i>
        </span>
       )
  }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Table from '../Table'
 import SearchField from '../Search'
-import uuid from 'react-uuid'
 
 export default class Directory extends Component {
 
@@ -16,13 +15,22 @@ export default class Directory extends Component {
 
     onSearch = (e) => {
         this.setState({ [e.target.name]: e.target.value })
-
+        
         const all = this.state.queried,
-          first = all.filter(x => x.name.first.includes(e.target.value)),
-          last = all.filter(x => x.name.last.includes(e.target.value)),
+          first = all.filter(x => x.name.first.toLowerCase().includes(e.target.value.toLowerCase())),
 
-          results = [...first, ...last];
+          last = all.filter(x => x.name.last.toLowerCase().includes(e.target.value.toLowerCase())),
+
+          withSurname = all.reduce((acc, cur) => {
+            cur.name.title = cur.name.first+' '+cur.name.last;
+            acc.push(cur)
+          return acc
+        }, []),
+          full = withSurname.filter(x => x.name.title.toLowerCase().includes(e.target.value.toLowerCase()));
           
+          let withDupes = new Set([...first, ...last, ...full])
+          const results = [...withDupes]
+
         this.setState({ employees: results })
     }
 
@@ -58,7 +66,6 @@ sortNames = () => {
 
             data.results.forEach( employee => {
                 const rowData = {
-                    id: uuid(),
                     name: employee.name,
                     phone: employee.phone,
                     email: employee.email,
