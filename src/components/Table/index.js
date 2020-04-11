@@ -5,15 +5,17 @@ import './style.css';
 
 export default function Table(props) {
         
+    const getColumns = () => ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age sort={props}/>]
+
     const getHeader = () => {
-      const columns = ['Photo', <Name sort={props}/>, 'Phone', 'Email', <Age sort={props}/>,]
-      return columns.map( column => <th>{column}</th>)
+      const columns = getColumns()
+      return columns.map( (column, i) => <th key={i}>{column}</th>)
     }
     
-    const getRows = () => props.data.map( row => <tr><Row data={row} /></tr>)
+    const getRows = () => props.data.map( (row, i) => <tr key={i}><Row data={row}  /></tr>)
     
     return (
-        <div>
+        <div style={{ justifyContent: "center", display: "flex" }}>
         <table>
         <thead>
             <tr>{getHeader()}</tr>
@@ -27,21 +29,21 @@ export default function Table(props) {
 }
 
 const Name =  ({ sort }) => {
-    const direction = sort.nameIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+    const direction = sort.nameIsSorted ? 'fa fa-angle-up' : 'fa fa-angle-down';
   return (
       <span>
           Name <i className={direction} 
             onClick={sort.sortNames}></i>
      </span>
     )
- };
+ }
 
 const Age =  ({ sort }) => {
-    const direction = sort.ageIsSorted ? 'fa fa-angle-down' : 'fa fa-angle-up';
+    const direction = sort.ageIsSorted ? 'fa fa-angle-up' : 'fa fa-angle-down';
     return (
         <span>
             Age <i className={direction} 
               onClick={sort.sortAges}></i>
        </span>
       )
- };
+ }

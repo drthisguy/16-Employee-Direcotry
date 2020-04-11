@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
-export default function Row(props) {
+export default function Row({ data }) {
     return (
-        <React.Fragment>
-            <td><img src={props.data.avatar} alt={'Employee Avatar'}></img></td>
-            <td>{props.data.name.first}{' '}{props.data.name.last}</td>
-            <td>{props.data.phone}</td>
-            <td>{props.data.email}</td>
-            <td>{props.data.age}</td>
+        <Router >
+        <React.Fragment> 
+            <td><img src={data.avatar} alt={'Employee Avatar'}></img></td>
+            <td>{data.name.first}{' '}{data.name.last}</td>
+            <td>{data.phone}</td>
+            <td><Link to={`mailto:${data.email}`}>{data.email}</Link></td>
+            <td>{data.age}</td>
         </React.Fragment>
+        </Router>
     )
 }

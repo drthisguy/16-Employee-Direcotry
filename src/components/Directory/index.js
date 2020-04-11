@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import API from '../../utils/API'
 import Table from '../Table'
 import SearchField from '../Search'
-
 
 export default class Directory extends Component {
 
@@ -14,49 +13,54 @@ export default class Directory extends Component {
         ageIsSorted: false
     }
 
-    onSearch = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
+  onSearch = (e) => {
+      this.setState({ [e.target.name]: e.target.value })
+      
+      const all = this.state.queried,
+        first = all.filter(x => x.name.first.toLowerCase().includes(e.target.value.toLowerCase())),
 
-        const all = this.state.queried,
-          first = all.filter(x => x.name.first.includes(e.target.value)),
-          last = all.filter(x => x.name.last.includes(e.target.value)),
+        last = all.filter(x => x.name.last.toLowerCase().includes(e.target.value.toLowerCase())),
 
-          results = [...first, ...last];
-          
-        this.setState({ employees: results })
+        withSurname = all.reduce((acc, cur) => {
+          cur.name.title = cur.name.first+' '+cur.name.last;
+          acc.push(cur)
+        return acc
+      }, []),
+        full = withSurname.filter(x => x.name.title.toLowerCase().includes(e.target.value.toLowerCase()));
+        
+        let withDupes = new Set([...first, ...last, ...full])
+        const results = [...withDupes]
+
+      this.setState({ employees: results })
+  }
+
+  sortNames = () => {
+    this.setState({ nameIsSorted: !this.state.nameIsSorted });
+
+    let results;
+    if (this.state.nameIsSorted) {
+      results = this.state.queried.sort((a, b) =>
+        a.name.last > b.name.last ? -1 : a.name.last < b.name.last ? 1 : 0
+      );
+    } else {
+      results = this.state.queried.sort((a, b) =>
+        a.name.last < b.name.last ? -1 : a.name.last > b.name.last ? 0 : 0
+      );
     }
-
-    sortNames = () => {
-        this.setState({ nameIsSorted: !this.state.nameIsSorted })
-
-        let results
-            if(this.state.nameIsSorted) {
-            results = this.state.queried.sort((a, b) => 
-
-            (a.name.last > b.name.last) ? -1 
-            : (a.name.last < b.name.last) ? 1
-            : 0)
-        } else {
-            results = this.state.queried.sort((a, b) => 
-            
-            (a.name.last < b.name.last) ? -1 
-            : (a.name.last > b.name.last) ? 0 
-            : 0)
-        }
-        this.setState({ employees: results })
-    }
+    this.setState({ employees: results });
+  };
 
     sortAges = () => {
         this.setState({ ageIsSorted: !this.state.ageIsSorted})
 
         const results = this.state.queried.sort((a, b) => 
-            this.state.ageIsSorted ? a.age - b.age : b.age - a.age)
+            this.state.ageIsSorted ? b.age - a.age : a.age - b.age)
          
         this.setState({ employees: results })
     }
 
     componentDidMount() {
-        axios.get('https://randomuser.me/api/?results=100')
+        API.getDirectory()
         .then( ({ data }) => {
           const rows = [];
 
@@ -70,6 +74,7 @@ export default class Directory extends Component {
                 } 
                 rows.push(rowData);
             })
+
             this.setState({ employees: rows })            
             this.setState({ queried: rows })            
         })
