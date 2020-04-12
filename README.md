@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Company Directory](https://compdirect.herokuapp.com/)
 
-## Available Scripts
 
-In the project directory, you can run:
+# 16-Company-Directory
 
-### `npm start`
+A searchable and sortable, employee directory:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Links](#links)
+* [Screens](#screen-grabs)
+* [Sources](#sources)
+* [Issues](#issues)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+___
 
-### `npm test`
+## General info
+This is a company directory application built entirely from ReactJS.  Company employees can access the contact information of co-workers or colleagues with a responsive search from the query field. Employees in the list can also be sorted in order by last name or age.  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+___
 
-### `npm run build`
+## Technologies
+* ReactJS
+* React-router-dom
+* axios
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	
+## Setup
+To run this project locally using npm cli:
+```
+$ type: npm install && npm start
+$ Or See deployed website.  
+```
+___
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Links:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Github Repo](https://github.com/drthisguy/16-company-directory)
 
-### `npm run eject`
+[Deployed Website](https://compdirect.herokuapp.com)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+___
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screens:
+![company-drectory-optimize](https://user-images.githubusercontent.com/48693333/79058874-3610a380-7c41-11ea-8343-a33239e36c5f.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+___
 
-## Learn More
+## Sources
+https://reactjs.org/docs  
+https://stackoverflow.com/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Issues & Contact
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+No known issues.  If any are found or if there are questions, email:  
+page.c.tyler@gmail.com 

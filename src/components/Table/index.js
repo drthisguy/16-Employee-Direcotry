@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from '../Row';
 import './style.css';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export default function Table(props) {
         
@@ -47,3 +47,8 @@ const Age =  ({ sort }) => {
        </span>
       )
  }
+
+ // propTypes
+Table.propTypes = {
+    Table: PropTypes.object.isRequired
+  }
