@@ -17,7 +17,7 @@ A searchable and sortable, employee directory:
 ___
 
 ## General info
-This is a company directory application built entirely from ReactJS.  Company employees can access the contact information of co-workers or colleagues with a responsive search from the query field. Employees in the list can also be sorted in order by last name or age.  
+This is a company directory application built with ReactJS.  Company employees can access the contact information of co-workers or colleagues with a name search for either their first, last or full names from the query field. Employees in the list can also be sorted in alphabetical order by last names, or their ages.  
 
 ___
 

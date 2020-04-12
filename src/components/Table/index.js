@@ -50,5 +50,5 @@ const Age =  ({ sort }) => {
 
  // propTypes
 Table.propTypes = {
-    Table: PropTypes.object.isRequired
+    Table: PropTypes.object
   }
