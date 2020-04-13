@@ -3,7 +3,7 @@
 
 # 16-Company-Directory
 
-A searchable and sortable, employee directory:
+A searchable and sortable, company directory:
 
 ## Table of contents
 * [General info](#general-info)
