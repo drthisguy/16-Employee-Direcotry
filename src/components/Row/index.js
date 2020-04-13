@@ -7,7 +7,7 @@ export default function Row({ data }) {
             <td><img src={data.avatar} alt={'Employee Avatar'}></img></td>
             <td>{data.name.first}{' '}{data.name.last}</td>
             <td>{data.phone}</td>
-            <td><a href={`mailto:${data.email}`}>{data.email}</a></td>
+            <td><a href={`mailto:${data.email}`} style={{color: "tomato"}}>{data.email}</a></td>
             <td>{data.age}</td>
         </React.Fragment>   
     )

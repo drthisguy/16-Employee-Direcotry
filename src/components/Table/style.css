@@ -6,6 +6,7 @@ td, th {
     text-align: left;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+
 table {
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-collapse: collapse;
@@ -15,8 +16,4 @@ table {
 
 .fa {
     float: right;
-}
-
-a {
-    color: tomato
 }
